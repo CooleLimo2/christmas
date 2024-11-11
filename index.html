@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariah Carey Defrosting Status</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(to bottom, #cce7ff, #ffccd5);
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        margin: 0;
+    }
+    .container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 90%;
+    }
+    .title {
+        font-size: 2em;
+        font-weight: bold;
+        color: #ff1493;
+        margin-bottom: 10px;
+    }
+    .percentage {
+        font-size: 4em;
+        font-weight: bold;
+        color: #ff4500;
+        margin: 20px 0;
+    }
+    .christmas-tree {
+        font-size: 1.5em;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Mariah Carey Defrosting Status ❄️</div>
+        <p>Current Defrost Percentage:</p>
+        <div class="percentage" id="defrostPercentage">0%</div>
+        <p>Will be 100% defrosted on Christmas Eve 🎄</p>
+        <div class="christmas-tree">🎶 All I Want for Christmas Is You... 🎵</div>
+    </div>
+    
+<script>
+    // Calculate days between two dates
+    function calculateDaysDifference(startDate, endDate) {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        const diffInTime = end.getTime() - start.getTime();
+        return Math.ceil(diffInTime / (1000 * 3600 * 24));
+    }
+
+    // Get today's date
+    const today = new Date();
+    
+    // Set the start date for defrosting (November 1st)
+    const defrostStartDate = new Date(today.getFullYear(), 10, 1); // November is month 10 (0-based index)
+    // Set the end date for defrosting (December 24th)
+    const defrostEndDate = new Date(today.getFullYear(), 11, 24); // December is month 11
+
+    // Total defrosting days from November 1st to December 24th
+    const totalDefrostDays = calculateDaysDifference(defrostStartDate, defrostEndDate);
+
+    // Calculate the number of days that have passed since the defrost started
+    const daysSinceDefrostStarted = calculateDaysDifference(defrostStartDate, today);
+
+    // Calculate defrost percentage (1.85% increase per day)
+    let defrostPercentage = daysSinceDefrostStarted * 1.85;
+
+    // Ensure the percentage is between 0 and 100
+    defrostPercentage = Math.max(0, Math.min(100, defrostPercentage));
+
+    // Display the defrost percentage
+    document.getElementById("defrostPercentage").textContent = `${defrostPercentage.toFixed(2)}%`;
+</script>
+</body>
+</html>
